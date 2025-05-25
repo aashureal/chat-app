@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Chat App</title>
+    <script
+      src="https://cdn.socket.io/4.8.1/socket.io.min.js"
+      integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body style="background-color: #111; color: #fff">
+    <main>
+      <ul id="messages"></ul>
+      <form id="form" autocomplete="off">
+        <input type="text" id="chat__input" placeholder="Type Message..." />
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+
+    <script>
+      const socket = io();
+      const form = document.querySelector("#form");
+      const chatInput = document.querySelector("#chat__input");
+      const messages = document.querySelector("#messages");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (chatInput.value) {
+          socket.emit("chat message", chatInput.value);
+          chatInput.value = "";
+        }
+      });
+
+      socket.on("chat message", (msg) => {
+        const li = document.createElement("li");
+        li.textContent = msg;
+        messages.appendChild(li);
+      });
+    </script>
+  </body>
+</html>
