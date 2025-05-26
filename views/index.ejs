@@ -16,17 +16,27 @@
           sans-serif;
       }
     </style>
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
-  <body style="background-color: #111; color: #fff">
+  <body style="background-color: #000; color: #fff">
     <main>
-      <ul id="messages"></ul>
+      <!-- <ul id="messages"></ul>
       <form id="form" autocomplete="off">
         <input type="text" id="chat__input" placeholder="Type Message..." />
         <button type="submit">Submit</button>
-      </form>
+      </form> -->
 
-      <br />
-      <h5 class="typingMessage"></h5>
+      <!-- <br />
+      <h5 class="typingMessage"></h5> -->
+
+      <div id="page">
+        <div class="header"></div>
+
+        <form class="input__group">
+          <input type="text" id="inputBox" placeholder="Type message here." />
+          <button id="sendBtn">Send</button>
+        </form>
+      </div>
     </main>
 
     <script>

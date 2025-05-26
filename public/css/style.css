@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#page {
+  background-color: rgb(38, 38, 38);
+  height: 100vh;
+  width: 36rem;
+  margin: auto;
+  padding: 1rem;
+  position: relative;
+}
+#page .header {
+  height: 4rem;
+  width: 100%;
+  background-color: beige;
+}
+#page .input__group {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  height: 3rem;
+  width: 100%;
+  display: flex;
+  padding: 0 1rem;
+  gap: 0.5rem;
+}
+#page .input__group input {
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 1.4rem;
+}
+#page .input__group button {
+  width: 4rem;
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+}/*# sourceMappingURL=style.css.map */
