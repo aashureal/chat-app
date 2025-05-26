@@ -7,18 +7,27 @@ ul {
   list-style: none;
 }
 
+main {
+  position: relative;
+}
 #chatPage {
   background-color: #222;
   width: 40rem;
   height: 100vh;
   margin: auto;
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  //   padding: 0 1rem;
 
   .header {
     height: 4rem;
-    background-color: #888;
+    background-color: #222;
     display: flex;
     align-items: center;
+    padding: 0 1rem;
+    border-bottom: 0.1rem solid #888;
 
     .typing__message {
       font-size: 1.3rem;
@@ -30,10 +39,13 @@ ul {
     display: flex;
     gap: 0.5rem;
     position: absolute;
-    // background-color: red;
+    background-color: #222;
     width: 100%;
     position: absolute;
-    bottom: 1rem;
+    bottom: 0rem;
+    height: 5rem;
+    align-items: center;
+    padding: 0 1rem;
 
     input,
     button {
@@ -50,8 +62,8 @@ ul {
       width: 100%;
       background-color: #888;
     }
-    input::placeholder{
-        color: #fff;
+    input::placeholder {
+      color: #fff;
     }
 
     button {
@@ -62,7 +74,42 @@ ul {
     }
   }
 
+  //   Chat Display Styles
+  .chat__display::-webkit-scrollbar {
+    display: none;
+  }
+  .chat__display {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    // margin-bottom: 40rem;
+    padding: 1rem 1rem 20rem 1rem;
 
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    .chat__content {
+      min-width: 10rem;
+      max-width: 30rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      background-color: rgb(45, 83, 255);
+      .username{
+        font-size: 1rem;
+        border-bottom: 0.1rem solid white;
+        margin-bottom: 0.5rem;
+        font-weight: 500;color: #b1afaf;
 
-//   Chat Display Styles
+    }
+    p{
+        font-size: 1.2rem;
+    }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #chatPage {
+    width: 100vw;
+  }
 }

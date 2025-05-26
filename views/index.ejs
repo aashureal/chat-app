@@ -20,7 +20,7 @@
   </head>
   <body style="background-color: #000; color: #fff">
     <main>
-      <!-- <ul id="messages"></ul>
+      <!-- <ul id="chatList"></ul>
       <form id="form" autocomplete="off">
         <input type="text" id="chat__input" placeholder="Type Message..." />
         <button type="submit">Submit</button>
@@ -31,56 +31,55 @@
 
       <div id="chatPage">
         <div class="header">
-          <p class="typing__message">nikhil is typing...</p>
+          <p class="typing__message"></p>
         </div>
-        <ul class="chat__display">
-          <li class="chat__content">
+        <ul class="chat__list chat__display">
+          <!-- <li class="chat__content">
             <h4 class="username">nikhil</h4>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
               explicabo.
             </p>
-          </li>
-          <li class="chat__content">
-            <h4 class="username">nikhil</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
-              explicabo.
-            </p>
-          </li>
+          </li> -->
         </ul>
-        <form class="input__group">
+        <form id="form" class="input__group">
           <input type="text" class="input__box" placeholder="Message" />
           <button>Send</button>
         </form>
       </div>
     </main>
 
-    <!-- <script>
+    <script>
       const socket = io();
       const form = document.querySelector("#form");
-      const chatInput = document.querySelector("#chat__input");
-      const messages = document.querySelector("#messages");
+      const inputBox = document.querySelector(".input__box");
+      const chatList = document.querySelector(".chat__list");
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        if (chatInput.value) {
-          socket.emit("chat message", chatInput.value);
-          chatInput.value = "";
+        if (inputBox.value) {
+          socket.emit("chat message", inputBox.value);
+          inputBox.value = "";
         }
       });
 
-      socket.on("chat message", (msg) => {
+      socket.on("chat message", (msg, id) => {
         const li = document.createElement("li");
-        li.textContent = msg;
-        messages.appendChild(li);
+        li.classList.add("chat__content");
+        li.innerHTML = `<li class="chat__content">
+            <h4 class="username">${id}</h4>
+            <p>
+            ${msg}
+            </p>
+          </li>`;
+        chatList.appendChild(li);
       });
 
       // Typing Message Display Logic
       let typingTimeout;
 
       // Emit typing event when input is detected
-      chatInput.addEventListener("input", () => {
+      inputBox.addEventListener("input", () => {
         socket.emit("typing");
 
         // Clear previous timeout
@@ -94,14 +93,14 @@
       // Show "typing" message
       socket.on("typing", (id) => {
         document.querySelector(
-          ".typingMessage"
+          ".typing__message"
         ).textContent = `${id} is typing....`;
       });
 
       // Hide "typing" message
       socket.on("stopTyping", () => {
-        document.querySelector(".typingMessage").textContent = "";
+        document.querySelector(".typing__message").textContent = "";
       });
-    </script> -->
+    </script>
   </body>
 </html>
