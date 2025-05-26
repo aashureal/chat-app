@@ -3,46 +3,66 @@
   padding: 0;
   box-sizing: border-box;
 }
+ul {
+  list-style: none;
+}
 
-#page {
-  background-color: rgb(38, 38, 38);
+#chatPage {
+  background-color: #222;
+  width: 40rem;
   height: 100vh;
-  width: 36rem;
   margin: auto;
-  padding: 1rem;
   position: relative;
 
   .header {
     height: 4rem;
-    width: 100%;
-    background-color: beige;
+    background-color: #888;
+    display: flex;
+    align-items: center;
+
+    .typing__message {
+      font-size: 1.3rem;
+    }
   }
 
   //   Input Group Styles
   .input__group {
+    display: flex;
+    gap: 0.5rem;
+    position: absolute;
+    // background-color: red;
+    width: 100%;
     position: absolute;
     bottom: 1rem;
-    left: 0;
-    background-color: red;
-    width: 100%;
-    height: 3rem;
-    width: 100%;
-    display: flex;
-    padding: 0 1rem;
-    gap: 0.5rem;
 
-    input {
-      width: 100%;
+    input,
+    button {
+      background-color: transparent;
       outline: none;
       border: none;
-      font-size: 1.4rem;
+      color: #fff;
+      border-radius: 0.5rem;
+    }
+
+    input {
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      width: 100%;
+      background-color: #888;
+    }
+    input::placeholder{
+        color: #fff;
     }
 
     button {
-      width: 4rem;
-      outline: none;
-      border: none;
+      // width: 4rem;
+      padding: 0.5rem 1rem;
       font-size: 1.2rem;
+      background-color: rgb(45, 83, 255);
     }
   }
+
+
+
+//   Chat Display Styles
 }

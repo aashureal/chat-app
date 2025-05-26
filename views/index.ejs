@@ -29,17 +29,34 @@
       <!-- <br />
       <h5 class="typingMessage"></h5> -->
 
-      <div id="page">
-        <div class="header"></div>
-
+      <div id="chatPage">
+        <div class="header">
+          <p class="typing__message">nikhil is typing...</p>
+        </div>
+        <ul class="chat__display">
+          <li class="chat__content">
+            <h4 class="username">nikhil</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
+              explicabo.
+            </p>
+          </li>
+          <li class="chat__content">
+            <h4 class="username">nikhil</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
+              explicabo.
+            </p>
+          </li>
+        </ul>
         <form class="input__group">
-          <input type="text" id="inputBox" placeholder="Type message here." />
-          <button id="sendBtn">Send</button>
+          <input type="text" class="input__box" placeholder="Message" />
+          <button>Send</button>
         </form>
       </div>
     </main>
 
-    <script>
+    <!-- <script>
       const socket = io();
       const form = document.querySelector("#form");
       const chatInput = document.querySelector("#chat__input");
@@ -85,6 +102,6 @@
       socket.on("stopTyping", () => {
         document.querySelector(".typingMessage").textContent = "";
       });
-    </script>
+    </script> -->
   </body>
 </html>
