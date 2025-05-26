@@ -24,6 +24,9 @@
         <input type="text" id="chat__input" placeholder="Type Message..." />
         <button type="submit">Submit</button>
       </form>
+
+      <br />
+      <h5 class="typingMessage"></h5>
     </main>
 
     <script>
@@ -44,6 +47,33 @@
         const li = document.createElement("li");
         li.textContent = msg;
         messages.appendChild(li);
+      });
+
+      // Typing Message Display Logic
+      let typingTimeout;
+
+      // Emit typing event when input is detected
+      chatInput.addEventListener("input", () => {
+        socket.emit("typing");
+
+        // Clear previous timeout
+        clearTimeout(typingTimeout);
+
+        typingTimeout = setTimeout(() => {
+          socket.emit("stopTyping");
+        }, 1500); // 1.5 seconds
+      });
+
+      // Show "typing" message
+      socket.on("typing", (id) => {
+        document.querySelector(
+          ".typingMessage"
+        ).textContent = `${id} is typing....`;
+      });
+
+      // Hide "typing" message
+      socket.on("stopTyping", () => {
+        document.querySelector(".typingMessage").textContent = "";
       });
     </script>
   </body>

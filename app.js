@@ -21,6 +21,15 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("🔴 User is Disconnected.");
   });
+
+  // Typing Message Display Logic
+  socket.on("typing", () => {
+    socket.broadcast.emit("typing", socket.id);
+  });
+
+  socket.on("stopTyping", () => {
+    socket.broadcast.emit("stopTyping");
+  });
 });
 
 const PORT = process.env.PORT || 3000;
